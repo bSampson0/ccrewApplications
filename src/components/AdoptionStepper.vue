@@ -293,6 +293,7 @@
 
               <v-stepper-step step="4" editable>
                 Animal Care Information
+                <v-small>A few questions about animal care.</v-small>
               </v-stepper-step>
               <v-stepper-content step="4" editable>
                 <v-card class="pa-8" elevation="0" color="#f7f7f7">

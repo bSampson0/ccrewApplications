@@ -2,14 +2,14 @@ import firebase from "firebase/app";
 import "firebase/firestore";
 
 const firebaseConfig = {
-  apiKey: "AIzaSyA6X9FBRGAFigHDQsiEmksiWwCtut2PoS8",
-  authDomain: "ccrew-adoption-application.firebaseapp.com",
-  databaseURL: "https://ccrew-adoption-application.firebaseio.com",
-  projectId: "ccrew-adoption-application",
-  storageBucket: "ccrew-adoption-application.appspot.com",
-  messagingSenderId: "666436751528",
-  appId: "1:666436751528:web:f669390501a792fe39f29d",
-  measurementId: "G-XSMQ8LTP4C"
+  apiKey: process.env.VUE_APP_API_KEY,
+  authDomain: process.env.VUE_APP_AUTH_DOMAIN,
+  databaseURL: process.env.VUE_APP_DATABASE_URL,
+  projectId: process.env.VUE_APP_PROJECT_ID,
+  storageBucket: process.env.VUE_APP_STORAGE_BUCKET,
+  messagingSenderId: process.env.VUE_APP_MESSAGING_SENDER_ID,
+  appId: process.env.VUE_APP_APP_ID,
+  measurementId: process.env.VUE_APP_MEASUREMENT_ID
 };
 
 // Initialize Firebase
