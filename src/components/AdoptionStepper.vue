@@ -608,7 +608,6 @@ export default {
       sendSuccess: false,
       emailRules: [
         v => !!v || "E-mail is required",
-        v => /.^[0-9]{5}(?:-[0-9]{4})?$/.test(v) || "E-mail must be valid"
       ],
       zipRules: [
         v => !!v || "Zip is required",
