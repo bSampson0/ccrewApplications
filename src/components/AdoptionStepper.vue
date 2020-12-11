@@ -79,17 +79,17 @@
                         <v-label>Zip Code</v-label>
                         <v-text-field
                           v-model="adoptionApplication.applicantZip"
-                          type="text"
+                          type="number"
                           solo
-                          :rules="requiredRules"
+                          :rules="zipRules"
                           required
                         />
                       </v-col>
                       <v-col cols="12" md="6">
-                        <v-label>Cell Phone</v-label>
+                        <v-label>Phone</v-label>
                         <v-text-field
                           v-model="adoptionApplication.applicantCellPhone"
-                          type="text"
+                          type="number"
                           solo
                           :rules="requiredRules"
                           required
@@ -99,7 +99,7 @@
                         <v-label>Home Phone</v-label>
                         <v-text-field
                           v-model="adoptionApplication.applicantHomePhone"
-                          type="text"
+                          type="number"
                           solo
                           :rules="requiredRules"
                           required
@@ -111,7 +111,7 @@
                           v-model="adoptionApplication.applicantEmail"
                           type="text"
                           solo
-                          :rules="requiredRules"
+                          :rules="emailRules"
                           required
                         />
                       </v-col>
@@ -254,12 +254,12 @@
                         ></v-select>
                       </v-col>
                       <v-col cols="12" md="4">
-                        <v-label>If rental, are dogs allowed?</v-label>
+                        <v-label>Are pets allowed?</v-label>
                         <v-text-field
-                          v-model="adoptionApplication.dogsAllowed"
+                          v-model="adoptionApplication.petsAllowed"
                           type="text"
-                          required
                           solo
+                          required
                           :rules="requiredRules"
                         />
                       </v-col>
@@ -268,9 +268,7 @@
                         <v-text-field
                           v-model="adoptionApplication.complexName"
                           type="text"
-                          required
                           solo
-                          :rules="requiredRules"
                         />
                       </v-col>
                       <v-col cols="12" md="4">
@@ -278,19 +276,15 @@
                         <v-text-field
                           v-model="adoptionApplication.landlordName"
                           type="text"
-                          required
                           solo
-                          :rules="requiredRules"
                         />
                       </v-col>
                       <v-col cols="12" md="5">
                         <v-label>Manager/Landlord phone number?</v-label>
                         <v-text-field
                           v-model="adoptionApplication.landlordPhone"
-                          type="text"
-                          required
+                          type="Number"
                           solo
-                          :rules="requiredRules"
                         />
                       </v-col>
                       <v-col cols="12" md="3">
@@ -319,10 +313,43 @@
                 </v-stepper-step>
                 <v-stepper-content step="4" editable>
                   <v-card class="pa-8" elevation="0" color="#f7f7f7">
-                    <v-row align="end">
+                    <v-row align="start">
+                      <v-col cols="12" md="4">
+                        <v-label>Are you interested in a Cat or Dog?</v-label>
+                        <v-select
+                          v-model="adoptionApplication.catOrDog"
+                          :items="catdog"
+                          single-line
+                          required
+                          solo
+                          :rules="requiredRules"
+                        ></v-select>
+                      </v-col>
+                      <v-col cols="12" md="8">
+                        <v-label>Name of animal you are interested in.</v-label>
+                        <v-text-field
+                          v-model="adoptionApplication.petInterested"
+                          type="text"
+                          solo
+                        />
+                      </v-col>
+                      <div
+                        class="catDeclawed"
+                        v-if="adoptionApplication.catOrDog === 'cat'"
+                        style="width:100%"
+                      >
+                        <v-col cols="12">
+                          <v-label>Have you ever declawed a cat?</v-label>
+                          <v-text-field
+                            v-model="adoptionApplication.catDeclaw"
+                            type="text"
+                            solo
+                          />
+                        </v-col>
+                      </div>
                       <v-col cols="12" md="6">
                         <v-label
-                          >How long will the dog be left alone each
+                          >How long will your pet be left alone each
                           day?</v-label
                         >
                         <v-text-field
@@ -335,11 +362,11 @@
                       </v-col>
                       <v-col cols="12" md="6">
                         <v-label
-                          >Where will dog sleep? (Bed, Crate, With you
+                          >Where your pet sleep? (Bed, Crate, With you
                           ect.)</v-label
                         >
                         <v-text-field
-                          v-model="adoptionApplication.dogsSleepStatus"
+                          v-model="adoptionApplication.petsSleepStatus"
                           type="text"
                           required
                           solo
@@ -359,32 +386,29 @@
                           :rules="requiredRules"
                         />
                       </v-col>
-                      <v-col cols="12" md="4">
-                        <v-label>Is your yard fenced?</v-label>
-                        <v-text-field
+                      <v-col cols="12">
+                        <v-switch
+                          color="green"
                           v-model="adoptionApplication.yardFenced"
-                          type="text"
-                          required
-                          solo
-                          :rules="requiredRules"
-                        />
+                          label="Is your yard fenced?"
+                        ></v-switch>
                       </v-col>
-                      <v-col cols="12" md="8">
-                        <v-label
-                          >How high is the fence and what type of fence is
-                          it?</v-label
-                        >
-                        <v-text-field
-                          v-model="adoptionApplication.fenceType"
-                          type="text"
-                          required
-                          solo
-                          :rules="requiredRules"
-                        />
-                      </v-col>
+                      <div class="ifFenced" style="width:100%">
+                        <v-col cols="12" v-if="adoptionApplication.yardFenced">
+                          <v-label
+                            >How high is the fence and what type of fence is
+                            it?</v-label
+                          >
+                          <v-text-field
+                            v-model="adoptionApplication.fenceType"
+                            type="text"
+                            solo
+                          />
+                        </v-col>
+                      </div>
                       <v-col cols="12" md="7">
                         <v-label
-                          >Where will the dog stay when left alone? (House,
+                          >Where will the pet stay when left alone? (House,
                           Room, Crate, Outside, etc)</v-label
                         >
                         <v-text-field
@@ -396,7 +420,7 @@
                         />
                       </v-col>
                       <v-col cols="12" md="5">
-                        <v-label>How do you plan to exercise your dog?</v-label>
+                        <v-label>How do you plan to exercise your pet?</v-label>
                         <v-text-field
                           v-model="adoptionApplication.exerciseStatus"
                           type="text"
@@ -447,7 +471,7 @@
                       </v-col>
                       <v-col cols="12">
                         <v-label
-                          >How much time do you have prepared for your new dog
+                          >How much time do you have prepared for your new pet
                           to adjust?</v-label
                         >
                         <v-text-field
@@ -460,16 +484,14 @@
                       </v-col>
                       <v-col cols="12">
                         <v-label
-                          >If you have a pickup truck, will the dog be left
+                          >If you have a pickup truck, will the pet be left
                           alone or allowed to ride freely in the bed of the
                           truck? If yes, please explain.</v-label
                         >
                         <v-text-field
                           v-model="adoptionApplication.pickupStatus"
                           type="text"
-                          required
                           solo
-                          :rules="requiredRules"
                         />
                       </v-col>
 
@@ -478,7 +500,6 @@
                         <v-switch
                           color="green"
                           v-model="adoptionApplication.hadPetsStatus"
-                          flat
                           label="Currently Have Pets?"
                         ></v-switch>
                       </v-col>
@@ -486,8 +507,6 @@
                       <div
                         class="hasPetsQuestions"
                         v-if="adoptionApplication.hadPetsStatus"
-                        solo
-                        :rules="requiredRules"
                       >
                         <v-container>
                           <v-row>
@@ -496,7 +515,6 @@
                                 v-model="adoptionApplication.currentPetsStatus"
                                 label="Name, age, and breed, and how long you have owned them."
                                 solo
-                                :rules="requiredRules"
                               ></v-textarea>
                             </v-col>
                             <v-col cols="12" md="6">
@@ -506,9 +524,7 @@
                               <v-text-field
                                 v-model="adoptionApplication.petHospitalName"
                                 type="text"
-                                required
                                 solo
-                                :rules="requiredRules"
                               />
                             </v-col>
                             <v-col cols="12" md="6">
@@ -518,9 +534,7 @@
                               <v-text-field
                                 v-model="adoptionApplication.petHospitalPhone"
                                 type="number"
-                                required
                                 solo
-                                :rules="requiredRules"
                               />
                             </v-col>
                           </v-row>
@@ -529,7 +543,7 @@
                       <v-col cols="12">
                         <v-label
                           >What Problems or issues would make you return your
-                          dog to the rescue?</v-label
+                          pet to the rescue?</v-label
                         >
                         <v-text-field
                           v-model="adoptionApplication.returnAnimalStatus"
@@ -555,14 +569,16 @@
                         <v-text-field
                           v-model="adoptionApplication.comments"
                           type="text"
-                          required
                           solo
-                          :rules="requiredRules"
                         />
                       </v-col>
                     </v-row>
                     <v-card-actions>
-                      <v-btn color="success" @click="createApplicant">
+                      <v-btn
+                        color="success"
+                        :disabled="!valid"
+                        @click="createApplicant"
+                      >
                         Submit
                       </v-btn>
                     </v-card-actions>
@@ -588,7 +604,16 @@ import { db } from "../plugins/firebase.js";
 export default {
   data() {
     return {
+      catdog: ["cat", "dog"],
       sendSuccess: false,
+      emailRules: [
+        v => !!v || "E-mail is required",
+        v => /.^[0-9]{5}(?:-[0-9]{4})?$/.test(v) || "E-mail must be valid"
+      ],
+      zipRules: [
+        v => !!v || "Zip is required",
+        v => v < 100000 || "Zip must be valid"
+      ],
       requiredRules: [v => !!v || "This field is required."],
       e6: 1,
       allergies: ["yes", "no"],
@@ -706,15 +731,18 @@ export default {
         hearAboutUs: "",
         homeActiveRating: "",
         typeOfResidence: "",
-        dogsAllowed: "",
+        petsAllowed: "",
         complexName: "",
         landlordName: "",
         landlordPhone: "",
         streetType: "",
-        dogsSleepStatus: "",
+        catOrDog: "",
+        catDeclaw: "",
+        petInterested: "",
+        petssSleepStatus: "",
         timeAlone: "",
         animalFood: "",
-        yardFenced: "",
+        yardFenced: false,
         fenceType: "",
         aloneStatus: "",
         exerciseStatus: "",
@@ -734,8 +762,8 @@ export default {
   },
   methods: {
     async createApplicant() {
-      this.$refs.form.validate();
-      console.log(this.$refs.form.validate());
+      // this.$refs.form.validate();
+      // console.log(this.$refs.form.validate());
       if (this.$refs.form.validate()) {
         try {
           await db.collection("adoptions").add({
