@@ -1,5 +1,8 @@
 <template>
   <div class="home">
+    <v-container>
+      <v-btn to="/applicants">View Applications</v-btn>
+    </v-container>
     <AdoptionStepper />
   </div>
 </template>

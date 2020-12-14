@@ -1,6 +1,7 @@
 import Vue from "vue";
 import VueRouter from "vue-router";
 import Home from "../views/Home.vue";
+import ApplicantData from "../views/ApplicantData.vue";
 
 Vue.use(VueRouter);
 
@@ -18,6 +19,16 @@ const routes = [
     // which is lazy-loaded when the route is visited.
     component: () =>
       import(/* webpackChunkName: "about" */ "../views/About.vue")
+  },
+  {
+    path: "/applicants",
+    name: "Applicants",
+    component: () => import("../views/Applicants.vue")
+  },
+  {
+    path: "/applicantData/:date",
+    name: "applicantData",
+    component: ApplicantData
   }
 ];
 

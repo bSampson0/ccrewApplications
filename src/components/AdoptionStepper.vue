@@ -606,9 +606,7 @@ export default {
     return {
       catdog: ["cat", "dog"],
       sendSuccess: false,
-      emailRules: [
-        v => !!v || "E-mail is required",
-      ],
+      emailRules: [v => !!v || "E-mail is required"],
       zipRules: [
         v => !!v || "Zip is required",
         v => v < 100000 || "Zip must be valid"
@@ -753,6 +751,7 @@ export default {
         hadPetsStatus: false,
         currentPetsStatus: "",
         petHospitalName: "",
+        petHostpitalPhone: "",
         returnAnimalStatus: "",
         petReturnIssue: "",
         comments: ""
