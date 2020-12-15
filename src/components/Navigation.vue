@@ -5,7 +5,7 @@
 
       <v-toolbar-title>CCREW</v-toolbar-title>
       <v-spacer></v-spacer>
-      <v-btn text small>Back to site</v-btn>
+      <v-btn text small to="https://ccrewdog.org">Back to site</v-btn>
     </v-app-bar>
 
     <v-navigation-drawer v-model="drawer" absolute temporary>
