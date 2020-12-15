@@ -1,9 +1,16 @@
 <template>
-  <div class="applicantData">
+  <div class="applicantData pt-6">
     <v-container>
       <v-row>
         <v-col cols="12">
-          <v-btn text to="/">Back to Form</v-btn>
+          <h2>Previously Submitted Applications</h2>
+          <p>Click on the View Application button to see full details.</p>
+        </v-col>
+      </v-row>
+    </v-container>
+    <v-container>
+      <v-row>
+        <v-col cols="12">
           <v-data-table
             :headers="headers"
             :items="dataDump"

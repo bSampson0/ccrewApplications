@@ -1,10 +1,14 @@
 <template>
   <div>
-    <div class="opening">
+    <div class="opening pt-6">
       <v-container>
         <v-row>
           <v-col>
-            <h2>Online Adoption Application</h2>
+            <h2>Adoption Application</h2>
+            <p>
+              Please use the form below to submit an adoption application to
+              Cascade Canine Rescue East & West.
+            </p>
           </v-col>
         </v-row>
       </v-container>
