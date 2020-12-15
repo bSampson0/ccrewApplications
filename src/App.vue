@@ -8,10 +8,10 @@
 </template>
 
 <script>
-import Navigation from "@/components/Navigation.vue";
+import Navigation from '@/components/Navigation.vue'
 
 export default {
-  name: "App",
+  name: 'App',
 
   components: {
     Navigation
@@ -20,10 +20,18 @@ export default {
   data: () => ({
     //
   })
-};
+}
 </script>
 
 <style>
+h1,
+h2,
+h3,
+h4,
+h5 {
+  font-family: 'Montserrat', sans-serif;
+}
 #app {
+  font-family: 'Open Sans', sans-serif;
 }
 </style>
