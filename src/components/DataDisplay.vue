@@ -7,169 +7,177 @@
             >Back to Applicants</v-btn
           >
         </v-col>
-        <v-card>
+        <v-card class="pa-3 my-card">
           <v-card-text>
-            <h1>Adoption Application: {{ lname }}, {{ fname }}</h1>
+            <h1>
+              <span class="main-name">{{ lname }}, {{ fname }}</span>
+            </h1>
           </v-card-text>
           <v-card-text>
-            <v-col cols="12">
-              <h2 class="pb-6">Contact Information</h2>
-              <p>
+            <h2 class="pb-6">Contact Information</h2>
+            <v-row class="d-flex oarea">
+              <v-col cols="12" sm="6" md="4">
                 <strong>First Name:</strong><br />
                 {{ fname }}
-              </p>
-              <p>
+              </v-col>
+              <v-col cols="12" sm="6" md="4">
                 <strong>Last Name:</strong><br />
                 {{ lname }}
-              </p>
-              <p>
+              </v-col>
+              <v-col cols="12" sm="6" md="4">
                 <strong>Address:</strong><br />
                 {{ address }}
-              </p>
-              <p>
+              </v-col>
+              <v-col cols="12" sm="6" md="4">
                 <strong>City:</strong><br />
                 {{ city }}
-              </p>
-              <p>
+              </v-col>
+              <v-col cols="12" sm="6" md="4">
                 <strong>State:</strong><br />
                 {{ state }}
-              </p>
-              <p>
+              </v-col>
+              <v-col cols="12" sm="6" md="4">
                 <strong>Zip:</strong><br />
                 {{ zip }}
-              </p>
-              <p>
+              </v-col>
+              <v-col cols="12" sm="6" md="4">
                 <strong>Phone:</strong><br />
                 {{ phone }}
-              </p>
-              <p>
+              </v-col>
+              <v-col cols="12" sm="6" md="4">
                 <strong>Email:</strong><br />
                 {{ email }}
-              </p>
-              <p>
+              </v-col>
+              <v-col cols="12" sm="6" md="4">
                 <strong>License:</strong><br />
                 {{ license }}
-              </p>
-              <p>
+              </v-col>
+              <v-col cols="12" sm="6" md="4">
                 <strong>State Registered:</strong><br />
                 {{ stateRegistered }}
-              </p>
-              <p>
+              </v-col>
+              <v-col cols="12" sm="6" md="4">
                 <strong>How did you hear about us?</strong> <br />
                 {{ hearAboutUs }}
-              </p>
-            </v-col>
+              </v-col>
+            </v-row>
           </v-card-text>
+
           <v-card-text>
-            <v-col cols="12">
-              <h2 class="pb-6">Employment Information</h2>
-              <p>
+            <h2 class="pb-6">Employment Information</h2>
+            <v-row class="d-flex oarea">
+              <v-col cols="12" sm="6" md="4">
                 <strong>Employment Status:</strong> <br />
                 {{ employmentStatus }}
-              </p>
-              <p>
+              </v-col>
+              <v-col cols="12" sm="6" md="4">
                 <strong>Employer or School Name:</strong> <br />
                 {{ employerOrSchoolName }}
-              </p>
-              <p>
-                <strong>Number of People in Household:</strong> <br />
-                {{ peopleInHousehold }}
-              </p>
-              <p>
-                <strong>Family Allergic?:</strong> <br />
-                {{ familyAllergic }}
-              </p>
-              <p>
-                <strong>How Active is Household:</strong> <br />
-                {{ homeActiveRating }}
-              </p>
-              <p>
-                <strong>Type of Residence:</strong> <br />
-                {{ typeOfResidence }}
-              </p>
-              <p>
-                <strong>Are Pets Allowed:</strong> <br />
-                {{ petsAllowed }}
-              </p>
-              <p>
-                <strong>Manager or Landlord Name:</strong> <br />
-                {{ landlordName }}
-              </p>
-              <p>
-                <strong>Manager or Landlord Phone:</strong> <br />
-                {{ landlordPhone }}
-              </p>
-              <p>
-                <strong>Complex Name:</strong> <br />
-                {{ complexName }}
-              </p>
-              <p>
-                <strong>Type of Street:</strong> <br />
-                {{ streetType }}
-              </p>
-            </v-col>
+              </v-col>
+            </v-row>
           </v-card-text>
           <v-card-text>
-            <v-col cols="12">
-              <h2 class="pb-6">Animal Care Information</h2>
-              <p>
+            <h2 class="pb-6">Household Information</h2>
+            <v-row class="d-flex oarea">
+              <v-col cols="12" sm="6" md="4">
+                <strong>Number of People in Household:</strong> <br />
+                {{ peopleInHousehold }}
+              </v-col>
+              <v-col cols="12" sm="6" md="4">
+                <strong>Family Allergic?:</strong> <br />
+                {{ familyAllergic }}
+              </v-col>
+              <v-col cols="12" sm="6" md="4">
+                <strong>How Active is Household:</strong> <br />
+                {{ homeActiveRating }}
+              </v-col>
+              <v-col cols="12" sm="6" md="4">
+                <strong>Type of Residence:</strong> <br />
+                {{ typeOfResidence }}
+              </v-col>
+              <v-col cols="12" sm="6" md="4">
+                <strong>Are Pets Allowed:</strong> <br />
+                {{ petsAllowed }}
+              </v-col>
+              <v-col cols="12" sm="6" md="4">
+                <strong>Manager or Landlord Name:</strong> <br />
+                {{ landlordName }}
+              </v-col>
+              <v-col cols="12" sm="6" md="4">
+                <strong>Manager or Landlord Phone:</strong> <br />
+                {{ landlordPhone }}
+              </v-col>
+              <v-col cols="12" sm="6" md="4">
+                <strong>Complex Name:</strong> <br />
+                {{ complexName }}
+              </v-col>
+              <v-col cols="12" sm="6" md="4">
+                <strong>Type of Street:</strong> <br />
+                {{ streetType }}
+              </v-col>
+            </v-row>
+          </v-card-text>
+          <v-card-text>
+            <h2 class="pb-6">Animal Care Information</h2>
+            <v-row class="d-flex oarea">
+              <v-col cols="12" sm="6" md="4">
                 <strong>Are you interested in a Cat or Dog:</strong> <br />
                 {{ catOrDog }}
-              </p>
-              <p>
+              </v-col>
+              <v-col cols="12" sm="6" md="4">
                 <strong>Name of animal you are interested in:</strong> <br />
                 {{ petInterested }}
-              </p>
-              <p>
+              </v-col>
+              <v-col cols="12" sm="6" md="4">
                 <strong>How long will your pet be left alone each day:</strong>
                 <br />
                 {{ timeAlone }}
-              </p>
-              <p>
+              </v-col>
+              <v-col cols="12" sm="6" md="4">
                 <strong>Where will your pet sleep:</strong> <br />
                 {{ petssSleepStatus }}
-              </p>
-              <p>
+              </v-col>
+              <v-col cols="12" sm="6" md="4">
                 <strong
                   >What brand of food do you currently or plan to feed to
                   current or newly adopted animal(s):</strong
                 >
                 <br />
                 {{ animalFood }}
-              </p>
-              <p>
+              </v-col>
+              <v-col cols="12" sm="6" md="4">
                 <strong>Is your yard fenced:</strong> <br />
                 {{ yardFenced }}
-              </p>
-              <p>
+              </v-col>
+              <v-col cols="12" sm="6" md="4">
                 <strong>Fence Height and Type:</strong> <br />
                 {{ fenceType }}
-              </p>
-              <p>
+              </v-col>
+              <v-col cols="12" sm="6" md="4">
                 <strong>Where will the pet stay when left alone:</strong> <br />
                 {{ aloneStatus }}
-              </p>
-              <p>
+              </v-col>
+              <v-col cols="12" sm="6" md="4">
                 <strong>How do you plan to exercise your pet:</strong> <br />
                 {{ exerciseStatus }}
-              </p>
-              <p>
+              </v-col>
+              <v-col cols="12" sm="6" md="4">
                 <strong
                   >Are you able/willing to hire a trainer or attend classes with
                   your new dog/puppy:</strong
                 >
                 <br />
                 {{ trainingStatus }}
-              </p>
-              <p>
+              </v-col>
+              <v-col cols="12" sm="6" md="4">
                 <strong
                   >If there were emergency veterinary costs, are you willing and
                   able to pay them:</strong
                 >
                 <br />
                 {{ vetCostStatus }}
-              </p>
-              <p>
+              </v-col>
+              <v-col cols="12" sm="6" md="4">
                 <strong
                   >What provisions will you make for the new animal(s),
                   including budgeting for new expense such as vaccine, food, and
@@ -177,52 +185,52 @@
                 >
                 <br />
                 {{ provisionsStatus }}
-              </p>
-              <p>
+              </v-col>
+              <v-col cols="12" sm="6" md="4">
                 <strong
                   >How much time do you have prepared for your new pet to
                   adjust:</strong
                 >
                 <br />
                 {{ adjustStatus }}
-              </p>
-              <p>
+              </v-col>
+              <v-col cols="12" sm="6" md="4">
                 <strong>Currently have pets:</strong> <br />
                 {{ hadPetsStatus }}
-              </p>
-              <p>
+              </v-col>
+              <v-col cols="12" sm="6" md="4">
                 <strong>Name, age, and breed:</strong> <br />
                 {{ currentPetsStatus }}
-              </p>
-              <p>
+              </v-col>
+              <v-col cols="12" sm="6" md="4">
                 <strong>Veterinary Hospital you last visited:</strong> <br />
                 {{ petHospitalName }}
-              </p>
-              <p>
+              </v-col>
+              <v-col cols="12" sm="6" md="4">
                 <strong>Veterinary Hospital Phone Number:</strong> <br />
                 {{ petHostpitalPhone }}
-              </p>
-              <p>
+              </v-col>
+              <v-col cols="12" sm="6" md="4">
                 <strong
                   >What Problems or issues would make you return your pet to the
                   rescue:</strong
                 >
                 <br />
                 {{ returnAnimalStatus }}
-              </p>
-              <p>
+              </v-col>
+              <v-col cols="12" sm="6" md="4">
                 <strong
                   >If your dog or cat does not get along with your other pets,
                   what will you do about it:</strong
                 >
                 <br />
                 {{ petReturnIssue }}
-              </p>
-              <p>
+              </v-col>
+              <v-col cols="12" sm="6" md="4">
                 <strong>Comment, Questions ect.:</strong> <br />
                 {{ comments }}
-              </p>
-            </v-col>
+              </v-col>
+            </v-row>
           </v-card-text>
         </v-card>
       </v-row>
@@ -283,4 +291,16 @@ export default {
 };
 </script>
 
-<style lang="scss" scoped></style>
+<style lang="scss" scoped>
+.oarea .col-12 {
+  margin-bottom: 2em;
+}
+.my-card .col-12 {
+  border-left: 1px solid #333;
+}
+.main-name {
+  color: #fff;
+  background: #125fa8;
+  padding: 3px 8px;
+}
+</style>

@@ -236,7 +236,7 @@
                           :rules="requiredRules"
                         ></v-select>
                       </v-col>
-                      <v-col cols="12">
+                      <v-col cols="12" class="mt-4">
                         <v-slider
                           color="#333"
                           v-model="adoptionApplication.homeActiveRating"
@@ -317,7 +317,7 @@
                 </v-stepper-step>
                 <v-stepper-content step="4" editable>
                   <v-card class="pa-8" elevation="0" color="#f7f7f7">
-                    <v-row align="start">
+                    <v-row align="end">
                       <v-col cols="12" md="4">
                         <v-label>Are you interested in a Cat or Dog?</v-label>
                         <v-select
@@ -788,9 +788,6 @@ export default {
   padding: 0px 8px;
 }
 .v-input {
-  margin-top: 5px !important;
-}
-.v-select {
-  margin-bottom: 2em !important;
+  margin-top: 8px !important;
 }
 </style>

@@ -16,6 +16,8 @@
             :items="dataDump"
             :items-per-page="5"
             class="elevation-1"
+            sort-by="createdOn"
+            sort-desc
           >
             <template v-slot:item.createdOn="{ item }">
               {{ item.createdOn.toDate().toDateString() }}
