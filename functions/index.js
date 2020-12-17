@@ -22,16 +22,17 @@ exports.sendMail = functions.firestore
   .onCreate(async (snap, context) => {
     // configure mail options for nodemailer
     const mailOptions = {
-      from: "CCREW <adoptions@ccrew.org>",
-      to: "bryce@mediamarco.com",
+      from: "CCREW <ccrewdog@gmail.com>",
+      to: "bryce@mediamarco.com, ccrewdogs@gmail.com",
       subject: "New Adoption Application Submission!",
       html: `
       <h3>
-        You have a new Adoption Applicatoin Submission!
+        ${snap.data().adoptionApplication.applicantFirstName} ${
+        snap.data().adoptionApplication.applicantLastName
+      } just 
+        submitted an adoption application.
       </h3>
-      <p>
-        Visit the website to see new form submissions!
-      </p>
+      <p>You can view this application and more by visiting this link <a href="https://ccrew-adoption-application.netlify.app">https://ccrew-adoption-application.netlify.app</a></p>
       `
     };
 
