@@ -393,11 +393,11 @@
                       </v-col>
                       <v-col cols="12" md="6">
                         <v-label
-                          >Where your pet sleep? (Bed, Crate, With you
+                          >Where will your pet sleep? (Bed, Crate, With you
                           ect.)</v-label
                         >
                         <v-text-field
-                          v-model="adoptionApplication.petsSleepStatus"
+                          v-model="adoptionApplication.petssSleepStatus"
                           type="text"
                           required
                           solo
@@ -824,8 +824,6 @@ export default {
   },
   methods: {
     async createApplicant() {
-      // this.$refs.form.validate();
-      // console.log(this.$refs.form.validate());
       if (this.$refs.form.validate()) {
         try {
           await db.collection("adoptions").add({

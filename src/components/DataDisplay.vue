@@ -294,7 +294,8 @@ export default {
     "petHospitalPhone",
     "returnAnimalStatus",
     "petReturnIssue",
-    "comments"
+    "comments",
+    "whyAdopt"
   ]
 };
 </script>
