@@ -1,37 +1,36 @@
-const functions = require('firebase-functions');
-const admin = require('firebase-admin')
-const nodemailer = require('nodemailer')
-const cors = require("cors")({ origin: true })
+const functions = require("firebase-functions");
+const admin = require("firebase-admin");
+const nodemailer = require("nodemailer");
+const cors = require("cors")({ origin: true });
 
 const user = functions.config().email.user;
 const pass = functions.config().email.pass;
 
-
 // configure transporter for nodemailer
 let transporter = nodemailer.createTransport({
-    service: "gmail",
-    port: 465,
-    secure: true,
-    auth: {
-      user: user,
-      pass: pass
-    }
-  });
+  service: "gmail",
+  port: 465,
+  secure: true,
+  auth: {
+    user: user,
+    pass: pass
+  }
+});
 
-  exports.sendMail = functions.firestore
-  .document("adoptions/{adoptionID}")
+exports.sendMail = functions.firestore
+  .document("adoptions/{registrationID}")
   .onCreate(async (snap, context) => {
     // configure mail options for nodemailer
     const mailOptions = {
-      from: "CCREW <bryce@mediamarco.com>",
-      to: (snap.data().adoptionApplication.applicantEmail, "bryce@mediamarco.com"),
-      subject: "Adoption Application Recieved",
+      from: "CCREW <adoptions@ccrew.org>",
+      to: "bryce@mediamarco.com",
+      subject: "New Adoption Application Submission!",
       html: `
       <h3>
-        Testing...
+        You have a new Adoption Applicatoin Submission!
       </h3>
       <p>
-        This is a test.
+        Visit the website to see new form submissions!
       </p>
       `
     };

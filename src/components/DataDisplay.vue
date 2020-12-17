@@ -92,8 +92,8 @@
                 {{ homeActiveRating }}
               </v-col>
               <v-col cols="12" sm="6" md="4">
-                <strong>Type of Residence:</strong> <br />
-                {{ typeOfResidence }}
+                <strong>Lives in appartment:</strong> <br />
+                {{ livesAppartment }}
               </v-col>
               <v-col cols="12" sm="6" md="4">
                 <strong>Are Pets Allowed:</strong> <br />
@@ -125,8 +125,16 @@
                 {{ catOrDog }}
               </v-col>
               <v-col cols="12" sm="6" md="4">
+                <strong>Age of animal you would like to adopt:</strong> <br />
+                {{ ageInterested }}
+              </v-col>
+              <v-col cols="12" sm="6" md="4">
                 <strong>Name of animal you are interested in:</strong> <br />
                 {{ petInterested }}
+              </v-col>
+              <v-col cols="12" sm="6" md="4">
+                <strong>Why do you want to adopt?</strong> <br />
+                {{ whyAdopt }}
               </v-col>
               <v-col cols="12" sm="6" md="4">
                 <strong>How long will your pet be left alone each day:</strong>
@@ -259,7 +267,7 @@ export default {
     "ageOfChildren",
     "familyAllergic",
     "homeActiveRating",
-    "typeOfResidence",
+    "livesAppartment",
     "petsAllowed",
     "complexName",
     "landlordName",

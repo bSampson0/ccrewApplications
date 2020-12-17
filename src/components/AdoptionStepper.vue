@@ -7,21 +7,25 @@
             <h2>Adoption Application</h2>
             <p>
               Please use the form below to submit an adoption application to
-              Cascade Canine Rescue East & West.
+              Cascade Canine Rescue East & West. <br />
+              You may also download the application
+              <a
+                href="https://www.ccrewdog.org/wp-content/uploads/2020/03/CCREWAdoptionApplication.pdf"
+                >HERE</a
+              >.
             </p>
           </v-col>
         </v-row>
       </v-container>
     </div>
     <v-form ref="form" v-model="valid" lazy-validation>
-      <div class="stepper">
+      <div class="stepper mb-6">
         <v-container>
           <v-row>
             <v-col>
               <v-stepper v-model="e6" vertical>
                 <v-stepper-step step="1" editable>
                   Contact Information
-                  <small>Basic contact info for our records.</small>
                 </v-stepper-step>
 
                 <v-stepper-content step="1" editable>
@@ -162,7 +166,6 @@
 
                 <v-stepper-step step="2" editable>
                   Employment Information
-                  <small>A few questions about where you work.</small>
                 </v-stepper-step>
 
                 <v-stepper-content step="2">
@@ -201,7 +204,6 @@
 
                 <v-stepper-step step="3" editable>
                   Housing Information
-                  <small>A few questions about your household makeup.</small>
                 </v-stepper-step>
 
                 <v-stepper-content step="3">
@@ -230,7 +232,7 @@
                         >
                         <v-select
                           v-model="adoptionApplication.familyAllergic"
-                          :items="allergies"
+                          :items="yesNo"
                           single-line
                           solo
                           :rules="requiredRules"
@@ -247,50 +249,56 @@
                           ticks
                         ></v-slider>
                       </v-col>
-                      <v-col cols="12" md="4">
-                        <v-label>Type of Residence</v-label>
-                        <v-select
-                          v-model="adoptionApplication.typeOfResidence"
-                          :items="residenceTypes"
-                          single-line
-                          solo
-                          :rules="requiredRules"
-                        ></v-select>
+                      <v-col cols="12">
+                        <v-switch
+                          color="green"
+                          :value="adoptionApplication.livesAppartment"
+                          v-model="adoptionApplication.livesAppartment"
+                          label="Do you rent your home or apartment?"
+                        ></v-switch>
                       </v-col>
-                      <v-col cols="12" md="4">
-                        <v-label>Are pets allowed?</v-label>
-                        <v-text-field
-                          v-model="adoptionApplication.petsAllowed"
-                          type="text"
-                          solo
-                          required
-                          :rules="requiredRules"
-                        />
-                      </v-col>
-                      <v-col cols="12" md="4">
-                        <v-label>Complex name (if applicable)?</v-label>
-                        <v-text-field
-                          v-model="adoptionApplication.complexName"
-                          type="text"
-                          solo
-                        />
-                      </v-col>
-                      <v-col cols="12" md="4">
-                        <v-label>Manager/Landlord name?</v-label>
-                        <v-text-field
-                          v-model="adoptionApplication.landlordName"
-                          type="text"
-                          solo
-                        />
-                      </v-col>
-                      <v-col cols="12" md="5">
-                        <v-label>Manager/Landlord phone number?</v-label>
-                        <v-text-field
-                          v-model="adoptionApplication.landlordPhone"
-                          type="Number"
-                          solo
-                        />
-                      </v-col>
+                      <div
+                        class="livesAppartment"
+                        v-if="adoptionApplication.livesAppartment"
+                        style="width:100%;"
+                      >
+                        <v-row>
+                          <v-col cols="12" md="4">
+                            <v-label>Are pets allowed?</v-label>
+                            <v-select
+                              v-model="adoptionApplication.petsAllowed"
+                              :items="yesNo"
+                              single-line
+                              solo
+                              :rules="requiredRules"
+                            ></v-select>
+                          </v-col>
+                          <v-col cols="12" md="4">
+                            <v-label>Complex name (if applicable)?</v-label>
+                            <v-text-field
+                              v-model="adoptionApplication.complexName"
+                              type="text"
+                              solo
+                            />
+                          </v-col>
+                          <v-col cols="12" md="4">
+                            <v-label>Manager/Landlord name?</v-label>
+                            <v-text-field
+                              v-model="adoptionApplication.landlordName"
+                              type="text"
+                              solo
+                            />
+                          </v-col>
+                          <v-col cols="12" md="5">
+                            <v-label>Manager/Landlord phone number?</v-label>
+                            <v-text-field
+                              v-model="adoptionApplication.landlordPhone"
+                              type="Number"
+                              solo
+                            />
+                          </v-col>
+                        </v-row>
+                      </div>
                       <v-col cols="12" md="3">
                         <v-label>Type of street?</v-label>
                         <v-select
@@ -313,7 +321,6 @@
 
                 <v-stepper-step step="4" editable>
                   Animal Care Information
-                  <small>A few questions about animal care.</small>
                 </v-stepper-step>
                 <v-stepper-content step="4" editable>
                   <v-card class="pa-8" elevation="0" color="#f7f7f7">
@@ -329,13 +336,33 @@
                           :rules="requiredRules"
                         ></v-select>
                       </v-col>
-                      <v-col cols="12" md="8">
-                        <v-label>Name of animal you are interested in.</v-label>
+                      <v-col cols="12" md="4">
+                        <v-label
+                          >Desired age of animal you want to adopt.</v-label
+                        >
+                        <v-text-field
+                          v-model="adoptionApplication.ageInterested"
+                          type="text"
+                          solo
+                        />
+                      </v-col>
+                      <v-col cols="12" md="4">
+                        <v-label
+                          >Name of animal you are interested in (if you have one
+                          you like already).</v-label
+                        >
                         <v-text-field
                           v-model="adoptionApplication.petInterested"
                           type="text"
                           solo
                         />
+                      </v-col>
+                      <v-col cols="12">
+                        <v-textarea
+                          v-model="adoptionApplication.whyAdopt"
+                          label="Why do you want to adopt?"
+                          solo
+                        ></v-textarea>
                       </v-col>
                       <div
                         class="catDeclawed"
@@ -511,38 +538,35 @@
                       <div
                         class="hasPetsQuestions"
                         v-if="adoptionApplication.hadPetsStatus"
+                        style="width:100%;"
                       >
-                        <v-container>
-                          <v-row>
-                            <v-col cols="12">
-                              <v-textarea
-                                v-model="adoptionApplication.currentPetsStatus"
-                                label="Name, age, and breed, and how long you have owned them."
-                                solo
-                              ></v-textarea>
-                            </v-col>
-                            <v-col cols="12" md="6">
-                              <v-label
-                                >Veterinary Hospital you last visited?</v-label
-                              >
-                              <v-text-field
-                                v-model="adoptionApplication.petHospitalName"
-                                type="text"
-                                solo
-                              />
-                            </v-col>
-                            <v-col cols="12" md="6">
-                              <v-label
-                                >Veterinary Hospital Phone Number?</v-label
-                              >
-                              <v-text-field
-                                v-model="adoptionApplication.petHospitalPhone"
-                                type="number"
-                                solo
-                              />
-                            </v-col>
-                          </v-row>
-                        </v-container>
+                        <v-row>
+                          <v-col cols="12">
+                            <v-textarea
+                              v-model="adoptionApplication.currentPetsStatus"
+                              label="Name, age, and breed, and how long you have owned them."
+                              solo
+                            ></v-textarea>
+                          </v-col>
+                          <v-col cols="12" md="6">
+                            <v-label
+                              >Veterinary Hospital you last visited?</v-label
+                            >
+                            <v-text-field
+                              v-model="adoptionApplication.petHospitalName"
+                              type="text"
+                              solo
+                            />
+                          </v-col>
+                          <v-col cols="12" md="6">
+                            <v-label>Veterinary Hospital Phone Number?</v-label>
+                            <v-text-field
+                              v-model="adoptionApplication.petHospitalPhone"
+                              type="number"
+                              solo
+                            />
+                          </v-col>
+                        </v-row>
                       </div>
                       <v-col cols="12">
                         <v-label
@@ -599,6 +623,41 @@
         </v-container>
       </div>
     </v-form>
+    <v-container>
+      <v-row>
+        <v-col cols="12">
+          <h2>Adoption Application Process</h2>
+          <p>
+            Rescue will review each adoption application and will interview each
+            applicant, by phone or in person. If the prospective adopter is a
+            likely fit for a particular dog, we will arrange for a meeting with
+            the dog. Our goal is to place each dog with the adopter who is the
+            best fit. At times, we have more than one qualified applicant
+            interested in adopting a particular dog. To determine the best
+            placement, we consider a number of factors, including, but not
+            limited to the following: (i) the amount of time the dog will be
+            alone each day; (ii) whether a dog will be adopted with another dog
+            or alone; (iii) other pets in the household; (iv) whether the dog
+            will be “indoor only;” (v) special needs of the particular dog; and
+            (vi) experience of the adopter. If, after meeting the dog, the
+            prospective adopter wants to proceed, our foster coordinator and the
+            foster parents will consult to determine next steps.
+          </p>
+          <h2>Adoption Fees</h2>
+          <p>
+            Our adoption fees range from $250 to $600 per dog and are based on
+            several factors: (i) characteristics of the dog (age, breed, breed
+            mix, etc.); (ii) input costs (e.g. special medical treatments);
+            (iii) special circumstances of the adopter; (iv) special
+            circumstances of the dog (special needs, length of time in foster
+            care, etc.); and (v) if a dog is being adopted along with another
+            dog. Under special circumstances, we may subsidize or waive a fee.
+            All fees are applied to the charitable purposes of rescuing, caring
+            for and placing dogs.
+          </p>
+        </v-col>
+      </v-row>
+    </v-container>
   </div>
 </template>
 
@@ -617,7 +676,7 @@ export default {
       ],
       requiredRules: [v => !!v || "This field is required."],
       e6: 1,
-      allergies: ["yes", "no"],
+      yesNo: ["yes", "no"],
       dogIssueTypes: [
         "Biting",
         "Shyness/Fear",
@@ -731,8 +790,8 @@ export default {
         familyAllergic: "no",
         hearAboutUs: "",
         homeActiveRating: "",
-        typeOfResidence: "",
-        petsAllowed: "",
+        livesAppartment: false,
+        petsAllowed: "yes",
         complexName: "",
         landlordName: "",
         landlordPhone: "",
@@ -740,6 +799,7 @@ export default {
         catOrDog: "",
         catDeclaw: "",
         petInterested: "",
+        ageInterested: "",
         petssSleepStatus: "",
         timeAlone: "",
         animalFood: "",

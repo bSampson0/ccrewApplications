@@ -47,6 +47,7 @@
       :returnAnimalStatus="data.adoptionApplication.returnAnimalStatus"
       :petReturnIssue="data.adoptionApplication.petReturnIssue"
       :comments="data.adoptionApplication.comments"
+      :livesAppartment="data.adoptionApplication.livesAppartment"
     />
   </div>
 </template>

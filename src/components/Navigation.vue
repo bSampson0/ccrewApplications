@@ -5,6 +5,8 @@
 
       <v-toolbar-title>CCREW</v-toolbar-title>
       <v-spacer></v-spacer>
+      <v-btn v-if="!loggedin" @click="login">Login</v-btn>
+      <v-btn v-else @click="logout">Logout</v-btn>
       <v-btn text small href="https://ccrewdog.org">Back to site</v-btn>
     </v-app-bar>
 
@@ -37,9 +39,18 @@
 export default {
   data: () => ({
     drawer: false,
-    group: null
-  })
-}
+    group: null,
+    loggedin: true
+  }),
+  methods: {
+    login() {
+      this.loggedin = true;
+    },
+    logout() {
+      this.loggedin = false;
+    }
+  }
+};
 </script>
 
 <style lang="scss" scoped></style>
