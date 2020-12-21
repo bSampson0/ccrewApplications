@@ -6,7 +6,8 @@ Vue.use(Vuex);
 export default new Vuex.Store({
   state: {
     dataDump: [],
-    currentId: null
+    currentId: null,
+    loggedin: false
   },
   mutations: {
     fetchData(state, payload) {
@@ -14,8 +15,21 @@ export default new Vuex.Store({
     },
     setId(state, payload) {
       state.currentId = payload;
+    },
+    login(state) {
+      state.loggedin = true;
+    },
+    logout(state) {
+      state.loggedin = false;
     }
   },
-  actions: {},
+  actions: {
+    login(context) {
+      context.commit("login");
+    },
+    logout(context) {
+      context.commit("logout");
+    }
+  },
   modules: {}
 });

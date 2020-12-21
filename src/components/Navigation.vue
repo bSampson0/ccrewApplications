@@ -5,7 +5,7 @@
 
       <v-toolbar-title>CCREW</v-toolbar-title>
       <v-spacer></v-spacer>
-      <v-btn v-if="!loggedin" @click="login">Login</v-btn>
+      <v-btn v-if="!loggedin" to="/login">Login</v-btn>
       <v-btn v-else @click="logout">Logout</v-btn>
       <v-btn text small href="https://ccrewdog.org">Back to site</v-btn>
     </v-app-bar>
@@ -22,13 +22,14 @@
             </v-list-item-icon>
             <v-list-item-title>Appplication Form</v-list-item-title>
           </v-list-item>
-
-          <v-list-item to="/applicants">
-            <v-list-item-icon>
-              <v-icon>mdi-account</v-icon>
-            </v-list-item-icon>
-            <v-list-item-title>Submitted Appplications</v-list-item-title>
-          </v-list-item>
+          <div class="loggedInMenu" v-if="loggedin">
+            <v-list-item to="/applicants">
+              <v-list-item-icon>
+                <v-icon>mdi-account</v-icon>
+              </v-list-item-icon>
+              <v-list-item-title>Submitted Appplications</v-list-item-title>
+            </v-list-item>
+          </div>
         </v-list-item-group>
       </v-list>
     </v-navigation-drawer>
@@ -39,15 +40,17 @@
 export default {
   data: () => ({
     drawer: false,
-    group: null,
-    loggedin: true
+    group: null
   }),
+  computed: {
+    loggedin() {
+      return this.$store.state.loggedin;
+    }
+  },
   methods: {
-    login() {
-      this.loggedin = true;
-    },
     logout() {
-      this.loggedin = false;
+      this.$store.dispatch("logout");
+      this.$router.go("/");
     }
   }
 };
