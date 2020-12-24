@@ -25,7 +25,7 @@
             <template v-slot:item.actions="{ item }">
               <router-link
                 :to="{
-                  name: 'applicantData',
+                  name: 'ApplicantData',
                   params: { date: item.createdOn.seconds }
                 }"
               >
