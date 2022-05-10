@@ -23,7 +23,7 @@
         <v-container>
           <v-row>
             <v-col>
-              <v-stepper v-model="e6" vertical>
+              <v-stepper v-model="e6" vertical class="stepper">
                 <v-stepper-step step="1" editable>
                   Contact Information
                 </v-stepper-step>
@@ -83,7 +83,7 @@
                           :rules="requiredRules"
                         ></v-select>
                       </v-col>
-                      <v-col cols="12" md="4">
+                      <v-col cols="12" md="4" class="mt-6">
                         <v-label>Zip Code</v-label>
                         <v-text-field
                           v-model="adoptionApplication.applicantZip"
@@ -145,7 +145,7 @@
                           :rules="requiredRules"
                         ></v-select>
                       </v-col>
-                      <v-col cols="12" md="6">
+                      <v-col cols="12" md="6" class="mt-6">
                         <v-label>How did you hear about us?</v-label>
                         <v-text-field
                           v-model="adoptionApplication.hearAboutUs"
@@ -183,7 +183,7 @@
                           :rules="requiredRules"
                         ></v-select>
                       </v-col>
-                      <v-col cols="12" md="8">
+                      <v-col cols="12" md="8" class="mt-6">
                         <v-label>Employer/School Name</v-label>
                         <v-text-field
                           v-model="adoptionApplication.employerOrSchoolName"
@@ -239,12 +239,14 @@
                         ></v-select>
                       </v-col>
                       <v-col cols="12" class="mt-4">
+                        <div class="v-label pb-12">
+                          How active is your home? (1-10)
+                        </div>
                         <v-slider
                           color="#333"
                           v-model="adoptionApplication.homeActiveRating"
                           max="10"
                           step="1"
-                          label="How active is your home? (1-10)"
                           thumb-label="always"
                           ticks
                         ></v-slider>
@@ -299,7 +301,7 @@
                           </v-col>
                         </v-row>
                       </div>
-                      <v-col cols="12" md="3">
+                      <v-col cols="12" md="3" class="mt-6">
                         <v-label>Type of street?</v-label>
                         <v-select
                           v-model="adoptionApplication.streetType"
@@ -540,33 +542,34 @@
                         v-if="adoptionApplication.hadPetsStatus"
                         style="width:100%;"
                       >
-                        <v-row>
-                          <v-col cols="12">
-                            <v-textarea
-                              v-model="adoptionApplication.currentPetsStatus"
-                              label="Name, age, and breed, and how long you have owned them."
-                              solo
-                            ></v-textarea>
-                          </v-col>
-                          <v-col cols="12" md="6">
-                            <v-label
-                              >Veterinary Hospital you last visited?</v-label
-                            >
-                            <v-text-field
-                              v-model="adoptionApplication.petHospitalName"
-                              type="text"
-                              solo
-                            />
-                          </v-col>
-                          <v-col cols="12" md="6">
-                            <v-label>Veterinary Hospital Phone Number?</v-label>
-                            <v-text-field
-                              v-model="adoptionApplication.petHospitalPhone"
-                              type="number"
-                              solo
-                            />
-                          </v-col>
-                        </v-row>
+                        <v-col cols="12">
+                          <v-label
+                            >Name, age, and breed, and how long you have owned
+                            them.</v-label
+                          >
+                          <v-textarea
+                            v-model="adoptionApplication.currentPetsStatus"
+                            solo
+                          ></v-textarea>
+                        </v-col>
+                        <v-col cols="12" md="6">
+                          <v-label
+                            >Veterinary Hospital you last visited?</v-label
+                          >
+                          <v-text-field
+                            v-model="adoptionApplication.petHospitalName"
+                            type="text"
+                            solo
+                          />
+                        </v-col>
+                        <v-col cols="12" md="6">
+                          <v-label>Veterinary Hospital Phone Number?</v-label>
+                          <v-text-field
+                            v-model="adoptionApplication.petHospitalPhone"
+                            type="number"
+                            solo
+                          />
+                        </v-col>
                       </div>
                       <v-col cols="12">
                         <v-label
@@ -662,183 +665,183 @@
 </template>
 
 <script>
-import { db } from '../plugins/firebase.js'
+import { db } from "../plugins/firebase.js";
 
 export default {
   data() {
     return {
-      catdog: ['cat', 'dog'],
+      catdog: ["cat", "dog"],
       sendSuccess: false,
-      emailRules: [(v) => !!v || 'E-mail is required'],
+      emailRules: [v => !!v || "E-mail is required"],
       zipRules: [
-        (v) => !!v || 'Zip is required',
-        (v) => v < 100000 || 'Zip must be valid'
+        v => !!v || "Zip is required",
+        v => v < 100000 || "Zip must be valid"
       ],
-      requiredRules: [(v) => !!v || 'This field is required.'],
+      requiredRules: [v => !!v || "This field is required."],
       e6: 1,
-      yesNo: ['yes', 'no'],
+      yesNo: ["yes", "no"],
       dogIssueTypes: [
-        'Biting',
-        'Shyness/Fear',
-        'Scratching/Climbing on Furniture',
-        'Jumping',
-        'Too Much Energy',
-        'Marking',
-        'Chewing on Things',
-        'Not Getting Along with Other Animals',
-        'Other'
+        "Biting",
+        "Shyness/Fear",
+        "Scratching/Climbing on Furniture",
+        "Jumping",
+        "Too Much Energy",
+        "Marking",
+        "Chewing on Things",
+        "Not Getting Along with Other Animals",
+        "Other"
       ],
       streetTypes: [
-        'Very Busy Road',
-        'Light Traffic',
-        'Residential Area',
-        'Country Road'
+        "Very Busy Road",
+        "Light Traffic",
+        "Residential Area",
+        "Country Road"
       ],
       residenceTypes: [
-        'House',
-        'Apartment',
-        'Condo',
-        'Mobile Home',
-        'Farm/Barn'
+        "House",
+        "Apartment",
+        "Condo",
+        "Mobile Home",
+        "Farm/Barn"
       ],
-      employmentOptions: ['Employed', 'Unemployed', 'Student', 'Retired'],
+      employmentOptions: ["Employed", "Unemployed", "Student", "Retired"],
       states: [
-        'Alabama',
-        'Alaska',
-        'American Samoa',
-        'Arizona',
-        'Arkansas',
-        'California',
-        'Colorado',
-        'Connecticut',
-        'Delaware',
-        'District of Columbia',
-        'Federated States of Micronesia',
-        'Florida',
-        'Georgia',
-        'Guam',
-        'Hawaii',
-        'Idaho',
-        'Illinois',
-        'Indiana',
-        'Iowa',
-        'Kansas',
-        'Kentucky',
-        'Louisiana',
-        'Maine',
-        'Marshall Islands',
-        'Maryland',
-        'Massachusetts',
-        'Michigan',
-        'Minnesota',
-        'Mississippi',
-        'Missouri',
-        'Montana',
-        'Nebraska',
-        'Nevada',
-        'New Hampshire',
-        'New Jersey',
-        'New Mexico',
-        'New York',
-        'North Carolina',
-        'North Dakota',
-        'Northern Mariana Islands',
-        'Ohio',
-        'Oklahoma',
-        'Oregon',
-        'Palau',
-        'Pennsylvania',
-        'Puerto Rico',
-        'Rhode Island',
-        'South Carolina',
-        'South Dakota',
-        'Tennessee',
-        'Texas',
-        'Utah',
-        'Vermont',
-        'Virgin Island',
-        'Virginia',
-        'Washington',
-        'West Virginia',
-        'Wisconsin',
-        'Wyoming'
+        "Alabama",
+        "Alaska",
+        "American Samoa",
+        "Arizona",
+        "Arkansas",
+        "California",
+        "Colorado",
+        "Connecticut",
+        "Delaware",
+        "District of Columbia",
+        "Federated States of Micronesia",
+        "Florida",
+        "Georgia",
+        "Guam",
+        "Hawaii",
+        "Idaho",
+        "Illinois",
+        "Indiana",
+        "Iowa",
+        "Kansas",
+        "Kentucky",
+        "Louisiana",
+        "Maine",
+        "Marshall Islands",
+        "Maryland",
+        "Massachusetts",
+        "Michigan",
+        "Minnesota",
+        "Mississippi",
+        "Missouri",
+        "Montana",
+        "Nebraska",
+        "Nevada",
+        "New Hampshire",
+        "New Jersey",
+        "New Mexico",
+        "New York",
+        "North Carolina",
+        "North Dakota",
+        "Northern Mariana Islands",
+        "Ohio",
+        "Oklahoma",
+        "Oregon",
+        "Palau",
+        "Pennsylvania",
+        "Puerto Rico",
+        "Rhode Island",
+        "South Carolina",
+        "South Dakota",
+        "Tennessee",
+        "Texas",
+        "Utah",
+        "Vermont",
+        "Virgin Island",
+        "Virginia",
+        "Washington",
+        "West Virginia",
+        "Wisconsin",
+        "Wyoming"
       ],
       valid: true,
-      ageGroups: ['21-34', '35-49', '50+'],
+      ageGroups: ["21-34", "35-49", "50+"],
       adoptionApplication: {
-        animalAgeDesired: '',
-        whyAdopt: '',
-        applicantFirstName: '',
-        applicantLastName: '',
-        applicantAgeGroup: '',
-        applicantCurrentAddress: '',
-        applicantCity: '',
-        applicantState: '',
-        applicantZip: '',
-        appplicantTimeAtResidence: '',
-        applicantCellPhone: '',
-        applicantHomePhone: '',
-        applicantEmail: '',
-        bestWayToContact: '',
-        driversLicense: '',
-        vehicleState: '',
-        employmentStatus: '',
-        employerOrSchoolName: '',
-        peopleInHousehold: '',
-        areThereChildren: '',
-        ageOfChildren: '',
-        familyAllergic: 'no',
-        hearAboutUs: '',
-        homeActiveRating: '',
+        animalAgeDesired: "",
+        whyAdopt: "",
+        applicantFirstName: "",
+        applicantLastName: "",
+        applicantAgeGroup: "",
+        applicantCurrentAddress: "",
+        applicantCity: "",
+        applicantState: "",
+        applicantZip: "",
+        appplicantTimeAtResidence: "",
+        applicantCellPhone: "",
+        applicantHomePhone: "",
+        applicantEmail: "",
+        bestWayToContact: "",
+        driversLicense: "",
+        vehicleState: "",
+        employmentStatus: "",
+        employerOrSchoolName: "",
+        peopleInHousehold: "",
+        areThereChildren: "",
+        ageOfChildren: "",
+        familyAllergic: "no",
+        hearAboutUs: "",
+        homeActiveRating: "",
         livesAppartment: false,
-        petsAllowed: 'yes',
-        complexName: '',
-        landlordName: '',
-        landlordPhone: '',
-        streetType: '',
-        catOrDog: '',
-        catDeclaw: '',
-        petInterested: '',
-        ageInterested: '',
-        petssSleepStatus: '',
-        timeAlone: '',
-        animalFood: '',
+        petsAllowed: "yes",
+        complexName: "",
+        landlordName: "",
+        landlordPhone: "",
+        streetType: "",
+        catOrDog: "",
+        catDeclaw: "",
+        petInterested: "",
+        ageInterested: "",
+        petssSleepStatus: "",
+        timeAlone: "",
+        animalFood: "",
         yardFenced: false,
-        fenceType: '',
-        aloneStatus: '',
-        exerciseStatus: '',
-        trainingStatus: '',
-        vetCostStatus: '',
-        provisionsStatus: '',
-        adjustStatus: '',
-        pickupStatus: '',
+        fenceType: "",
+        aloneStatus: "",
+        exerciseStatus: "",
+        trainingStatus: "",
+        vetCostStatus: "",
+        provisionsStatus: "",
+        adjustStatus: "",
+        pickupStatus: "",
         hadPetsStatus: false,
-        currentPetsStatus: '',
-        petHospitalName: '',
-        petHostpitalPhone: '',
-        returnAnimalStatus: '',
-        petReturnIssue: '',
-        comments: ''
+        currentPetsStatus: "",
+        petHospitalName: "",
+        petHostpitalPhone: "",
+        returnAnimalStatus: "",
+        petReturnIssue: "",
+        comments: ""
       }
-    }
+    };
   },
   methods: {
     async createApplicant() {
       if (this.$refs.form.validate()) {
         try {
-          await db.collection('adoptions').add({
+          await db.collection("adoptions").add({
             createdOn: new Date(),
             adoptionApplication: this.adoptionApplication
-          })
-          this.$refs.form.reset()
-          this.sendSuccess = true
+          });
+          this.$refs.form.reset();
+          this.sendSuccess = true;
         } catch (err) {
-          console.log(err)
+          console.log(err);
         }
       }
     }
   }
-}
+};
 </script>
 
 <style>
@@ -847,5 +850,11 @@ export default {
 }
 .v-input {
   margin-top: 8px !important;
+}
+.v-stepper {
+  box-shadow: none !important;
+}
+.v-label {
+  color: rgba(0, 0, 0, 0.6);
 }
 </style>

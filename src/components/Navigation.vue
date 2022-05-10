@@ -7,7 +7,9 @@
       <v-spacer></v-spacer>
       <v-btn v-if="!loggedin" to="/login">Login</v-btn>
       <v-btn v-else @click="logout">Logout</v-btn>
-      <v-btn text small href="https://ccrewdog.org">Back to site</v-btn>
+      <v-btn disabled text small href="https://ccrewdog.org"
+        >Back to site</v-btn
+      >
     </v-app-bar>
 
     <v-navigation-drawer v-model="drawer" absolute temporary>
