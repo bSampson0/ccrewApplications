@@ -83,7 +83,7 @@
                           :rules="requiredRules"
                         ></v-select>
                       </v-col>
-                      <v-col cols="12" md="4" class="mt-6">
+                      <v-col cols="12" md="4">
                         <v-label>Zip Code</v-label>
                         <v-text-field
                           v-model="adoptionApplication.applicantZip"
@@ -145,7 +145,7 @@
                           :rules="requiredRules"
                         ></v-select>
                       </v-col>
-                      <v-col cols="12" md="6" class="mt-6">
+                      <v-col cols="12" md="6">
                         <v-label>How did you hear about us?</v-label>
                         <v-text-field
                           v-model="adoptionApplication.hearAboutUs"
@@ -183,7 +183,7 @@
                           :rules="requiredRules"
                         ></v-select>
                       </v-col>
-                      <v-col cols="12" md="8" class="mt-6">
+                      <v-col cols="12" md="8">
                         <v-label>Employer/School Name</v-label>
                         <v-text-field
                           v-model="adoptionApplication.employerOrSchoolName"
@@ -301,7 +301,7 @@
                           </v-col>
                         </v-row>
                       </div>
-                      <v-col cols="12" md="3" class="mt-6">
+                      <v-col cols="12" md="3">
                         <v-label>Type of street?</v-label>
                         <v-select
                           v-model="adoptionApplication.streetType"
@@ -360,9 +360,9 @@
                         />
                       </v-col>
                       <v-col cols="12">
+                        <v-label>Why do you want to adopt?</v-label>
                         <v-textarea
                           v-model="adoptionApplication.whyAdopt"
-                          label="Why do you want to adopt?"
                           solo
                         ></v-textarea>
                       </v-col>
